@@ -13,3 +13,5 @@
 	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 [grep]
 	lineNumber = true
+[push]
+	default = matching
