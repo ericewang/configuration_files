@@ -128,14 +128,13 @@ export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[32m\]
 
 # old version
 #export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
+#export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\] 🍔  "
 export CLICOLOR=1
 
 export LSCOLORS=ExFxBxDxCxegedabagacad
+alias gg='git grep'
+alias sublime='/usr/bin/sublime-text'
+#alias box='ssh -2 -p 22 ewang@login.cms.caltech.edu'
+
 PATH=$PATH:$HOME/bin
 MANPATH=$MANPATH:$HOME/share/man
-
-#alias box='ssh -2 -p 22 ewang@login.cms.caltech.edu'
-alias sublime='/usr/bin/sublime-text'
-
-# old version
-#export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\] 🍔  "
