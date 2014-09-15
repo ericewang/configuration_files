@@ -17,3 +17,5 @@
 	lineNumber = true
 [push]
 	default = matching
+[diff]
+    renames = copies
