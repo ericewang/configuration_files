@@ -13,6 +13,7 @@ Personal config files:
 * .gitconfig
 
 Vim plugins (all installed via pathogen.vim):
+
 * AG (note requires "make install" to create)
 * Ctrl-P
 * Supertab
