@@ -6,6 +6,7 @@ used. Contains vim plugins and configuration files
 for terminal-invoked programs.
 
 Personal config files:
+
 * .vimrc
 * .tmux.conf
 * .bashrc
