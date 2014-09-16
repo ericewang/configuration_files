@@ -11,6 +11,7 @@ Personal config files:
 * .tmux.conf
 * .bashrc
 * .gitconfig
+* .bash_profile (named bash_mac)
 
 Vim plugins (all installed via pathogen.vim):
 
