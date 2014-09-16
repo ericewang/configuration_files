@@ -18,4 +18,3 @@ Vim plugins (all installed via pathogen.vim):
 * Vim-sensible
 * Vim-scala
 * Vim-fugitive
-
