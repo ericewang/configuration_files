@@ -144,6 +144,8 @@ alias gme='git log --author=ericwang'
 alias gb='git branch'
 alias gc='git checkout'
 alias gs='git show'
+alias gd='git diff --color-words'
+alias gca='git commit --amend'
 
 # cd aliases
 alias cdm='cd ~/co/manage'
@@ -156,6 +158,11 @@ alias cdg='cd ~/co/manage/scala/grabbers/src/main/scala'
 # run console
 alias dco='~/co/manage/script/console'
 
+# run server
+alias ss='~/co/manage/script/server'
+# run livebroker
+alias lb='cdm; ./script/live_broker/live_broker.rb --skip-running-procs'
+
 # svnmerge aliases : svna, svnm, svnprep, svnm_auto
 if [ -f ~/co/manage/script/svnmerge_helpers.sh ]; then
     source ~/co/manage/script/svnmerge_helpers.sh
@@ -166,3 +173,4 @@ fi
 PATH=$PATH:$HOME/bin
 MANPATH=$MANPATH:$HOME/share/man
 
+export PATH="$PATH:/usr/bin:/usr/local/bin/"
