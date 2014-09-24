@@ -45,4 +45,6 @@ alias gme='git log --author=ericwang'
 alias gb='git branch'
 alias gc='git checkout'
 alias gs='git show'
+alias gd='git diff --color-words'
+alias gca='git commit --amend'
 
