@@ -163,6 +163,9 @@ alias ss='~/co/manage/script/server'
 # run livebroker
 alias lb='cdm; ./script/live_broker/live_broker.rb --skip-running-procs'
 
+# ssh-agent aliases setup
+alias dssh='ssh-add ~/.ssh/dev_rsa'
+
 # svnmerge aliases : svna, svnm, svnprep, svnm_auto
 if [ -f ~/co/manage/script/svnmerge_helpers.sh ]; then
     source ~/co/manage/script/svnmerge_helpers.sh
@@ -174,3 +177,10 @@ PATH=$PATH:$HOME/bin
 MANPATH=$MANPATH:$HOME/share/man
 
 export PATH="$PATH:/usr/bin:/usr/local/bin/"
+
+# for compiling of openwrt build
+export OPENWRT_HOSTCC=gcc-4.7
+
+# installing ruby versions
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"

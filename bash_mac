@@ -48,3 +48,6 @@ alias gs='git show'
 alias gd='git diff --color-words'
 alias gca='git commit --amend'
 
+# ssh-agent aliases setup
+alias dssh='ssh-add ~/.ssh/dev_rsa'
+
