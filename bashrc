@@ -209,3 +209,9 @@ extract () {
 alias freq='cut -f1 -d" " ~/.bash_history | sort | uniq -c | sort -nr | head -n 30'
 alias tm='ps -ef | grep'
 alias myip='curl ip.appspot.com'
+alias howcool='git log --author="ericwang" --pretty=tformat: --numstat | gawk '"'"'{ add += $1; subs += $2; loc += $1-$2 } END {printf "added lines: %s removed lines: %s total lines: %s\n", add, subs, loc }'"'"
+function gr { grep -rnIi "$1" . --color; }
+pe () 
+{ 
+    perl -e "\$result = $*; printf \"%s\n0x%08x\n\", \$result, \$result;"
+}
