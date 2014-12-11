@@ -51,7 +51,7 @@ alias gca='git commit --amend'
 # ssh-agent aliases setup
 alias dssh='ssh-add ~/.ssh/dev_rsa'
 
-alias sob='source ~/.bashrc'
+alias sob='source ~/.bash_profile'
 extract () {
     if [ -f $1 ] ; then
       case $1 in
@@ -75,3 +75,13 @@ extract () {
 alias freq='cut -f1 -d" " ~/.bash_history | sort | uniq -c | sort -nr | head -n 30'
 alias tm='ps -ef | grep'
 alias myip='curl ip.appspot.com'
+function gr { grep -rnIi "$1" . --color; }
+pe ()
+{
+    perl -e "\$result = $*; printf \"%s\n0x%08x\n\", \$result, \$result;"
+}
+
+alias u='osascript ~/Documents/IncreaseVolume.scpt'
+alias d='osascript ~/Documents/DecreaseVolume.scpt'
+alias m='osascript ~/Documents/ToggleMuteVolume.scpt'
+alias g='osascript -e "get volume settings"'
