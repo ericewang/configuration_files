@@ -48,6 +48,12 @@ alias gs='git show'
 alias gd='git diff --color-words'
 alias gca='git commit --amend'
 
+# cd aliases
+alias cdm='cd ~/co/manage'
+alias cds='cd ~/co/manage/scala'
+alias cdg='cd ~/co/manage/scala/grabbers/src/main/scala'
+alias cdt='cd ~/co/manage/scala/grabbers/test/main/scala'
+
 # ssh-agent aliases setup
 alias dssh='ssh-add ~/.ssh/dev_rsa'
 
