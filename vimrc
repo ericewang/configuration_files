@@ -8,6 +8,9 @@ filetype plugin indent on
 
 " Basics {
 
+    "set YCM config file to read
+    "let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+
     set nocompatible        " turn off vi-compatible mode 
     set noexrc              " don't use local version of .(g)vimrc, .exrc
     "set background=dark     " blue shows much better
@@ -26,7 +29,7 @@ filetype plugin indent on
     let g:ctrlp_switch_buffer = 0
     let g:ctrlp_working_path_mode = 0
     let g:ctrlp_custom_ignore = {
-     \ 'dir': '\.git$\|\.svn$\|log\tmp$\|source_maps$\|jetty$\|node_modules$',
+     \ 'dir': '\.git$\|\.svn$\|log\tmp$\|source_maps$\|jetty$\|vendor$\|node_modules$\|hostapd-0.5.11$\|linux-2.6.32$\|linux-3.14$\|linux-3.18$\|linux-3.4$\|mvsc2$\|spectral$\|ub8x$\|vitesse$\|bcm2$\|bcm3$\|bcm-switch$\|bird$\|wlan$\|wlan-9.2$\|wpa_supplicant$',
      \ 'file': '\.exe$\|\.so$|\.min\.js$\|.pack.js$\|.min\.css$\|.cert$\|.patch'
      \ }
     let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
@@ -34,10 +37,14 @@ filetype plugin indent on
 
     " fugitive.vim shortcuts
     " type g followed by * over a word in normal mode to git grep for it
-    nnoremap g* :Ggrep <cword><cr><cr>:copen<cr>  
+    nnoremap g* :Ggrep <cword><cr><cr>:copen<cr>
 
     " type g followed by r in normal mode to open a git grep search prompt
     nnoremap gr :Ggrep<space>
+
+    " YouCompleteMe options
+    "let g:ycm_confirm_extra_conf = 0
+    "let g:ycm_autoclose_preview_window_after_insertion = 1
 
     set nobackup
     set noswapfile
