@@ -19,7 +19,7 @@ filetype plugin indent on
     "let g:solarized_termcolors = 256  " New line!!
     "colorscheme solarized
 
-    "let g:ctrlp_working_path_mode = 'ra'
+    let g:ctrlp_working_path_mode = 'ra'
     "let g:ctrlp_user_command = 'find %s -type f'  " use external tool to search
     let g:ctrlp_clear_cache_on_exit=0
     let g:ctrlp_max_files=0  " no limit for files to scan
@@ -27,7 +27,7 @@ filetype plugin indent on
     let g:ctrlp_max_depth = 40 " set max depth
     let g:ctrlp_match_window = 'bottom,order:ttb'
     let g:ctrlp_switch_buffer = 0
-    let g:ctrlp_working_path_mode = 0
+    "let g:ctrlp_working_path_mode = 0
     let g:ctrlp_custom_ignore = {
      \ 'dir': '\.git$\|\.svn$\|log\tmp$\|source_maps$\|jetty$\|vendor$\|node_modules$\|hostapd-0.5.11$\|linux-2.6.32$\|linux-3.14$\|linux-3.18$\|linux-3.4$\|mvsc2$\|spectral$\|ub8x$\|vitesse$\|bcm2$\|bcm3$\|bcm-switch$\|bird$\|wlan$\|wlan-9.2$\|wpa_supplicant$',
      \ 'file': '\.exe$\|\.so$|\.min\.js$\|.pack.js$\|.min\.css$\|.cert$\|.patch'
@@ -45,6 +45,32 @@ filetype plugin indent on
     " YouCompleteMe options
     "let g:ycm_confirm_extra_conf = 0
     "let g:ycm_autoclose_preview_window_after_insertion = 1
+
+    " Vim-Airline options
+    let g:airline#extensions#tabline#enabled = 1
+    let g:airline#extensions#tabline#left_sep = ' '
+    let g:airline#extensions#tabline#left_alt_sep = '|'
+    " Show just the filename
+    let g:airline#extensions#tabline#fnamemod = ':t'
+
+    " allows buffers to hidden when you've modified buffer
+    set hidden
+
+    " Move to the next buffer
+    "nmap <leader>l :bnext<CR>
+    " Move to the previous buffer
+    "nmap <leader>h :bprevious<CR>
+    " Close the current buffer and move to the previous one
+    " This replicates the idea of closing a tab
+    "nmap <leader>bq :bp <BAR> bd #<CR>
+    " Show all open buffers and their status
+    "nmap <leader>bl :ls<CR>
+
+    " my preferred shortcuts for tab navigation
+    nnoremap <C-n> :bnext<CR>
+    nnoremap <C-m> :bprevious<CR>
+    nnoremap <C-l> :buffers<CR>
+    nnoremap <C-b> :bdelete<CR>
 
     set nobackup
     set noswapfile
