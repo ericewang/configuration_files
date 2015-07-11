@@ -146,14 +146,17 @@ alias gc='git checkout'
 alias gs='git show'
 alias gd='git diff --color-words'
 alias gca='git commit --amend'
+alias gl='git log -p --stat'
 
 # cd aliases
 alias cdm='cd ~/co/manage'
 alias cdr='cd ~/co/router'
 alias cdmr='cd ~/co/manage-released'
 alias cdd='cd /var/local/meraki/manage-devel'
+alias cdj='cd ~/co/manage/private/react'
 alias cds='cd ~/co/manage/scala'
 alias cdg='cd ~/co/manage/scala/grabbers/src/main/scala'
+alias cdt='cd ~/co/manage/scala/grabbers/src/test/scala'
 
 # run console
 alias dco='~/co/manage/script/console'
@@ -171,19 +174,17 @@ if [ -f ~/co/manage/script/svnmerge_helpers.sh ]; then
     source ~/co/manage/script/svnmerge_helpers.sh
 fi
 
-#alias box='ssh -2 -p 22 ewang@login.cms.caltech.edu'
-
 PATH=$PATH:$HOME/bin
 MANPATH=$MANPATH:$HOME/share/man
 
 export PATH="$PATH:/usr/bin:/usr/local/bin/"
 
 # for compiling of openwrt build
-export OPENWRT_HOSTCC=gcc-4.7
+#export OPENWRT_HOSTCC=gcc-4.7
 
 # installing ruby versions
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+#export PATH="$HOME/.rbenv/bin:$PATH"
+#eval "$(rbenv init -)"
 
 alias sob='source ~/.bashrc'
 extract () {
@@ -210,6 +211,9 @@ alias freq='cut -f1 -d" " ~/.bash_history | sort | uniq -c | sort -nr | head -n 
 alias tm='ps -ef | grep'
 alias myip='curl ip.appspot.com'
 alias howcool='git log --author="ericwang" --pretty=tformat: --numstat | gawk '"'"'{ add += $1; subs += $2; loc += $1-$2 } END {printf "added lines: %s removed lines: %s total lines: %s\n", add, subs, loc }'"'"
+alias cr='/home/ericwang/co/manage/script/cr'
+alias gitbro="git log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
+
 function gr { grep -rnIi "$1" . --color; }
 pe () 
 { 

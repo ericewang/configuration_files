@@ -18,12 +18,26 @@ filetype plugin indent on
 
     "let g:ctrlp_working_path_mode = 'ra'
     "let g:ctrlp_user_command = 'find %s -type f'  " use external tool to search
+    let g:ctrlp_clear_cache_on_exit=0
     let g:ctrlp_max_files=0  " no limit for files to scan
+    let g:ctrlp_lazy_update=0
     let g:ctrlp_max_depth = 40 " set max depth
     let g:ctrlp_match_window = 'bottom,order:ttb'
     let g:ctrlp_switch_buffer = 0
     let g:ctrlp_working_path_mode = 0
-    let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""' " if AG installed
+    let g:ctrlp_custom_ignore = {
+     \ 'dir': '\.git$\|\.svn$\|log\tmp$\|source_maps$\|jetty$\|node_modules$',
+     \ 'file': '\.exe$\|\.so$|\.min\.js$\|.pack.js$\|.min\.css$\|.cert$\|.patch'
+     \ }
+    let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
+    "let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""' " if AG installed
+
+    " fugitive.vim shortcuts
+    " type g followed by * over a word in normal mode to git grep for it
+    nnoremap g* :Ggrep <cword><cr><cr>:copen<cr>  
+
+    " type g followed by r in normal mode to open a git grep search prompt
+    nnoremap gr :Ggrep<space>
 
     set nobackup
     set noswapfile
@@ -102,9 +116,9 @@ filetype plugin indent on
     set infercase               " cased inferred                                          
 "    set nowrap                  " do not wrap line
     set smartcase               " if there are caps, go case-sensitive
-    set shiftwidth=4            " auto-indent spacing with cindent, >>, <<, etc.
+    set shiftwidth=2            " auto-indent spacing with cindent, >>, <<, etc.
     "set softtabstop=4           " spaces a tab should be when hitting tab or backsp
-    set tabstop=4               " real tabs are 4 spaces, shown with set list on
+    set tabstop=2               " real tabs are 4 spaces, shown with set list on
     nnoremap <F2> :set invpaste paste?<CR>
     set pastetoggle=<F2>
     set showmode
