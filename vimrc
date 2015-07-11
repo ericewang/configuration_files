@@ -6,19 +6,15 @@
 execute pathogen#infect()
 filetype plugin indent on
 
-" Basics {
+" Vim Package Configurations {
 
-    "set YCM config file to read
+    " YouCompleteMe - not used anymore
     "let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+    "let g:ycm_confirm_extra_conf = 0
+    "let g:ycm_autoclose_preview_window_after_insertion = 1
 
-    set nocompatible        " turn off vi-compatible mode 
-    set noexrc              " don't use local version of .(g)vimrc, .exrc
-    "set background=dark     " blue shows much better
-    syntax enable               " syntax highlighting on
-    "set background=dark
-    "let g:solarized_termcolors = 256  " New line!!
-    "colorscheme solarized
-
+    " Ctrl-P settings
+    " use the nearest .git/.svn repo as your root dir
     let g:ctrlp_working_path_mode = 'ra'
     "let g:ctrlp_user_command = 'find %s -type f'  " use external tool to search
     let g:ctrlp_clear_cache_on_exit=0
@@ -28,6 +24,7 @@ filetype plugin indent on
     let g:ctrlp_match_window = 'bottom,order:ttb'
     let g:ctrlp_switch_buffer = 0
     "let g:ctrlp_working_path_mode = 0
+    " All the ignored stuff from indexing
     let g:ctrlp_custom_ignore = {
      \ 'dir': '\.git$\|\.svn$\|log\tmp$\|source_maps$\|jetty$\|vendor$\|node_modules$\|hostapd-0.5.11$\|linux-2.6.32$\|linux-3.14$\|linux-3.18$\|linux-3.4$\|mvsc2$\|spectral$\|ub8x$\|vitesse$\|bcm2$\|bcm3$\|bcm-switch$\|bird$\|wlan$\|wlan-9.2$\|wpa_supplicant$',
      \ 'file': '\.exe$\|\.so$|\.min\.js$\|.pack.js$\|.min\.css$\|.cert$\|.patch'
@@ -35,16 +32,12 @@ filetype plugin indent on
     let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
     "let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""' " if AG installed
 
-    " fugitive.vim shortcuts
+    " Vim-fugitive shortcuts
     " type g followed by * over a word in normal mode to git grep for it
     nnoremap g* :Ggrep <cword><cr><cr>:copen<cr>
 
     " type g followed by r in normal mode to open a git grep search prompt
     nnoremap gr :Ggrep<space>
-
-    " YouCompleteMe options
-    "let g:ycm_confirm_extra_conf = 0
-    "let g:ycm_autoclose_preview_window_after_insertion = 1
 
     " Vim-Airline options
     let g:airline#extensions#tabline#enabled = 1
@@ -53,7 +46,29 @@ filetype plugin indent on
     " Show just the filename
     let g:airline#extensions#tabline#fnamemod = ':t'
 
+" }
+
+
+" Syntax highlighting {
+
+    "set background=dark     " blue shows much better
+    syntax enable               " syntax highlighting on
+    "let g:solarized_termcolors = 256  " New line!!
+    colorscheme solarized
+
+" }
+
+
+" Basics {
+
+    " leader key
+    let mapleader = ','
+
+    set nocompatible        " turn off vi-compatible mode 
+    set noexrc              " don't use local version of .(g)vimrc, .exrc
+
     " allows buffers to hidden when you've modified buffer
+    " this allows changing buffers with unsaved changes
     set hidden
 
     " Move to the next buffer
@@ -66,7 +81,7 @@ filetype plugin indent on
     " Show all open buffers and their status
     "nmap <leader>bl :ls<CR>
 
-    " my preferred shortcuts for tab navigation
+    " my preferred shortcuts for buffer navigation
     nnoremap <C-n> :bnext<CR>
     nnoremap <C-m> :bprevious<CR>
     nnoremap <C-l> :buffers<CR>
@@ -81,20 +96,17 @@ filetype plugin indent on
     "set title                " change the terminal's title
     "set visualbell           " don't beep
     "set noerrorbells         " don't beep
-
     set pastetoggle=<F2>     " paste toggle mode to avoid indentations
-
-    " leader key
-    let mapleader = ','
-
     set autoread
+
+    " Fast saving
+    nmap <leader>w :w<CR>
 " }                                                                                       
 
 
 " Vim UI {
 
-"    set cursorcolumn        " highlight current column
-
+    "set cursorcolumn        " highlight current column
     hi StatusLine ctermfg=green
     set cursorline
     set incsearch           " highlight as search phrase is typed
@@ -130,28 +142,29 @@ filetype plugin indent on
 
 " Text Formatting/Layout {
 
-    "set autoindent              " repeat current indent level in next line
-
     set cinoptions=l1           " indenting for switch cases
     filetype on
-    set expandtab               " turn tabs into spaces...
 
     if has("autocmd")           " ... except in Makefiles
       au BufRead,BufNewFile Makefile* set noexpandtab
     endif
 
+    "set autoindent              " repeat current indent level in next line
     "set smartindent             " guess indent level based on previous line
     "set formatoptions=rq        " insert comment leader on return, and
-
                                 " let gq format comments
                                 
     set ignorecase              " case insensitive
     set infercase               " cased inferred                                          
-"    set nowrap                  " do not wrap line
+    set nowrap                  " do not wrap line
     set smartcase               " if there are caps, go case-sensitive
+
+    set expandtab               " turn tabs into spaces...
     set shiftwidth=2            " auto-indent spacing with cindent, >>, <<, etc.
-    "set softtabstop=4           " spaces a tab should be when hitting tab or backsp
     set tabstop=2               " real tabs are 4 spaces, shown with set list on
+    "set softtabstop=4           " spaces a tab should be when hitting tab or backsp
+
+    " paste mode -> ignores indentation
     nnoremap <F2> :set invpaste paste?<CR>
     set pastetoggle=<F2>
     set showmode
@@ -168,8 +181,6 @@ filetype plugin indent on
     set foldlevel=100           " don't autofold                                          
     set foldopen=block,hor,mark,percent,quickfix,tag    " these open folds
 
-    
-
     function SimpleFoldTextPython() " {
             return getline(v:lnum)[0]==\"\\t\"
     endfunction " }
@@ -180,17 +191,6 @@ filetype plugin indent on
     set foldtext=SimpleFoldTextPython()       " custom fold text function
 
 "}
-
-
-" GNU Screen {
-
-    map ^[[1~ <Home>
-    map ^[[4~ <End>
-    imap ^[[1~ <Home>
-    imap ^[[4~ <End>
-
-"}
-
 
 " Navigation {
 
@@ -204,26 +204,19 @@ filetype plugin indent on
     nnoremap <C-K> <C-W><C-K>
     nnoremap <C-L> <C-W><C-L>
     nnoremap <C-H> <C-W><C-H>
+
+    " File opening
     set splitbelow
     set splitright
 
     " Faster tab traversal
-
     map gj gt
     map gk gT
-
-
-    " Error
-
-"    cnoreabbrev W w
-"    cnoreabbrev Q q
-"    cnoreabbrev Wq wq
-"    cnoreabbrev WQ wq
 
 "}
 
 
-" extra
+" extras
 
 if has("autocmd")
       au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
