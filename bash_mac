@@ -47,15 +47,29 @@ alias gc='git checkout'
 alias gs='git show'
 alias gd='git diff --color-words'
 alias gca='git commit --amend'
+alias gl='git log -p --stat'
 
 # cd aliases
 alias cdm='cd ~/co/manage'
+alias cdr='cd ~/co/router'
+alias cdk='cd ~/co/router/meraki'
+alias cdh='cd ~/co/router/hostap'
+alias cdb='cd ~/co/router/base'
+alias cdj='cd ~/co/manage/private/react'
 alias cds='cd ~/co/manage/scala'
 alias cdg='cd ~/co/manage/scala/grabbers/src/main/scala'
 alias cdt='cd ~/co/manage/scala/grabbers/test/main/scala'
 
 # ssh-agent aliases setup
 alias dssh='ssh-add ~/.ssh/dev_rsa'
+
+# ssh aliases
+alias d109='ssh dev109'
+
+# sublime alias for Mac OS X
+alias subl='/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl'
+alias mountmanage='sshfs ericwang@dev109.meraki.com:/home/ericwang/co/manage /Users/ericwang/remote/manage -oauto_cache,reconnect,Ciphers=arcfour'
+alias umountmanage='sudo umount /Users/ericwang/remote/manage'
 
 alias sob='source ~/.bash_profile'
 extract () {
@@ -91,3 +105,6 @@ alias u='osascript ~/Documents/IncreaseVolume.scpt'
 alias d='osascript ~/Documents/DecreaseVolume.scpt'
 alias m='osascript ~/Documents/ToggleMuteVolume.scpt'
 alias g='osascript -e "get volume settings"'
+
+# for adding sml to path
+export PATH="$PATH:/usr/local/smlnj/bin"
