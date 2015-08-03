@@ -1,21 +1,56 @@
 [core]
-	editor = vim
+	editor = /usr/bin/vim
+
 [user]
 	name = Eric Wang
 	email = wang.eric93@gmail.com
+
 [color]
+  branch = auto
+  diff = auto
+  status = auto
 	ui = true
+[color "branch"]
+  current = red reverse
+  local = blue
+  remote = green
+[color "diff"]
+  meta = yellow
+  frag = magenta
+  old = red bold
+  new = green
+  plain = white
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+
 [alias]
 	co = checkout
 	ci = commit
 	st = status
 	br = branch
+  r = reset
+  cp = cherry-pick
 	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-    ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
-    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+  ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+  ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+
+  # change defaults slightly
+  diff = diff --word-diff
+  grep = grep -Ii
+
+  # grep for filename
+  f = "!git ls-files | grep -i"
+
+  # list all aliases
+  alias = "!git config -l | grep alias | cut -c 7-"
+
 [grep]
 	lineNumber = true
+
 [push]
 	default = matching
+
 [diff]
-    renames = copies
+  renames = copies
