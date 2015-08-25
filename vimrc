@@ -110,6 +110,8 @@ filetype plugin indent on
     hi StatusLine ctermfg=green
     set cursorline
     set incsearch           " highlight as search phrase is typed
+    " toggle highlight search with F3
+    nnoremap <F3> :set hlsearch!<CR>
     set laststatus=2        " always show status line
     set linespace=0         " don't insert extra pixel lines between rows
     set listchars=tab:>-,trail:-    " show tabs and trailing
