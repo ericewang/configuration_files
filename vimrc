@@ -26,8 +26,8 @@ filetype plugin indent on
     "let g:ctrlp_working_path_mode = 0
     " All the ignored stuff from indexing
     let g:ctrlp_custom_ignore = {
-     \ 'dir': '\.git$\|\.svn$\|log\tmp$\|source_maps$\|jetty$\|vendor$\|node_modules$\|hostapd-0.5.11$\|linux-2.6.32$\|linux-3.14$\|linux-3.18$\|linux-3.4$\|mvsc2$\|spectral$\|ub8x$\|vitesse$\|bcm2$\|bcm3$\|bcm-switch$\|bird$\|wlan$\|wlan-9.2$\|wpa_supplicant$',
-     \ 'file': '\.exe$\|\.so$|\.min\.js$\|.pack.js$\|.min\.css$\|.cert$\|.patch'
+     \ 'dir': '\.git$\|\.svn$\|log\tmp$\|source_maps$\|jetty$\|vendor$\|node_modules$\|ambarella$\|hostapd-0.5.11$\|linux-2.6.32$\|linux-3.4$\|linux-qca-3.4$\|linux-3.14$\|linux-3.18$\|mvsc2$\|openwrt$\|spectral$\|ub9x$\|vitesse$\|vitesse2$\|bcm2$\|bcm3$\|bcm-switch$\|bird$\|wlan$\|wlan-10.4$\|wpa_supplicant$',
+     \ 'file': '\.exe$\|\.so$\|\.d$\|\.o$|\.min\.js$\|.pack.js$\|.min\.css$\|.cert$\|.patch$\|.u.o'
      \ }
     let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
     "let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""' " if AG installed
