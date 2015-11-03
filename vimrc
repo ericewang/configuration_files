@@ -54,7 +54,7 @@ filetype plugin indent on
     "set background=dark     " blue shows much better
     syntax enable               " syntax highlighting on
     "let g:solarized_termcolors = 256  " New line!!
-    colorscheme solarized
+    "colorscheme solarized
 
 " }
 
