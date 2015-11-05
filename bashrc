@@ -138,7 +138,7 @@ alias la='ls -A'
 alias l='ls -CF'
 
 # git aliases
-alias gg='git grep'
+alias gg='git grep -n'
 alias gsr='git svn rebase'
 alias gme='git log --author=ericwang'
 alias gb='git branch'
@@ -161,10 +161,21 @@ alias cdt='cd ~/co/manage/scala/grabbers/src/test/scala'
 # run console
 alias dco='~/co/manage/script/console'
 
+# sbt alias
+alias sbt='LD_LIBRARY_PATH=/home/ericwang/co/manage/scala/support/lib/i386 sbt'
+
 # run server
-alias ss='~/co/manage/script/server'
+alias ss='~/co/manage/script/server --debug'
 # run livebroker
 alias lb='cdm; ./script/live_broker/live_broker.rb --skip-running-procs'
+
+# sql related aliases
+alias dspsql='psql -U www-data meraki_shard_development -h shard-development-db.meraki.com'
+alias personaltestsql='psql -U meraki_test_helper -h development-db.meraki.com -d meraki_test_ericwang'
+alias tpsql='psql -U www-data-test -d meraki_test -h development-db'
+alias sqltd='~/co/manage/cpp/sqlt/sqlt development-lt 5458'
+alias mysqltd='~/co/manage/cpp/sqlt/sqlt localhost 10002'
+alias mylt='~/co/manage/cpp/little_table/server -c 500 -t 200 -p 10002 ~/local_lt'
 
 # ssh-agent aliases setup
 alias dssh='ssh-add ~/.ssh/dev_rsa'
@@ -207,15 +218,22 @@ extract () {
          echo "'$1' is not a valid file"
      fi
 }
+
+# random useful aliases
 alias freq='cut -f1 -d" " ~/.bash_history | sort | uniq -c | sort -nr | head -n 30'
 alias tm='ps -ef | grep'
 alias myip='curl ip.appspot.com'
 alias howcool='git log --author="ericwang" --pretty=tformat: --numstat | gawk '"'"'{ add += $1; subs += $2; loc += $1-$2 } END {printf "added lines: %s removed lines: %s total lines: %s\n", add, subs, loc }'"'"
+alias hownot='git log --author="Eric Wang" --pretty=tformat: --numstat | gawk '"'"'{ add += $1; subs += $2; loc += $1-$2 } END {printf "added lines: %s removed lines: %s total lines: %s\n", add, subs, loc }'"'"
+function gitstats {
+    echo "Stats for: $1"
+    git log --author="$1" --pretty=tformat: --numstat | gawk '{ add += $1; subs += $2; loc += $1-$2 } END {printf "added lines: %s removed lines: %s total lines: %s\n", add, subs, loc }'
+}
 alias cr='/home/ericwang/co/manage/script/cr'
 alias gitbro="git log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
 
 function gr { grep -rnIi "$1" . --color; }
-pe () 
-{ 
+pe ()
+{
     perl -e "\$result = $*; printf \"%s\n0x%08x\n\", \$result, \$result;"
 }
