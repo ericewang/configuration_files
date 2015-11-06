@@ -136,6 +136,7 @@ alias c='clear'
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+alias lsd='ls -d */'
 
 # git aliases
 alias gg='git grep -n'
@@ -151,6 +152,9 @@ alias gl='git log -p --stat'
 # cd aliases
 alias cdm='cd ~/co/manage'
 alias cdr='cd ~/co/router'
+alias cdk='cd ~/co/router/meraki'
+alias cdh='cd ~/co/router/hostap'
+alias cdb='cd ~/co/router/base'
 alias cdmr='cd ~/co/manage-released'
 alias cdd='cd /var/local/meraki/manage-devel'
 alias cdj='cd ~/co/manage/private/react'
@@ -229,11 +233,12 @@ function gitstats {
     echo "Stats for: $1"
     git log --author="$1" --pretty=tformat: --numstat | gawk '{ add += $1; subs += $2; loc += $1-$2 } END {printf "added lines: %s removed lines: %s total lines: %s\n", add, subs, loc }'
 }
-alias cr='/home/ericwang/co/manage/script/cr'
-alias gitbro="git log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
-
 function gr { grep -rnIi "$1" . --color; }
 pe ()
 {
     perl -e "\$result = $*; printf \"%s\n0x%08x\n\", \$result, \$result;"
 }
+# alias for power supply
+alias apc='telnet 10.3.13.133'
+alias cr='/home/ericwang/co/manage/script/cr'
+alias gitbro="git log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
