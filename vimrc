@@ -145,6 +145,13 @@ filetype plugin indent on
 
 " Text Formatting/Layout {
 
+    " file/language specific text formatting options
+    autocmd FileType java setlocal shiftwidth=4 tabstop=4
+    autocmd FileType cpp setlocal shiftwidth=4 tabstop=4
+    autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
+    autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
+    autocmd FileType python setlocal shiftwidth=2 tabstop=2
+
     set cinoptions=l1           " indenting for switch cases
     filetype on
 
