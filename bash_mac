@@ -56,15 +56,30 @@ alias cdk='cd ~/co/router/meraki'
 alias cdh='cd ~/co/router/hostap'
 alias cdb='cd ~/co/router/base'
 alias cdj='cd ~/co/manage/private/react'
-alias cds='cd ~/co/manage/scala'
-alias cdg='cd ~/co/manage/scala/grabbers/src/main/scala'
-alias cdt='cd ~/co/manage/scala/grabbers/test/main/scala'
+
+# scala aliases
+function cds {
+  if [ -z $1 ]; then
+    cd ~/co/manage/scala
+  else
+    cd ~/co/manage/scala/$1/src/main/scala
+  fi
+}
+
+function cdst {
+  if [ -z $1 ]; then
+    echo "You suck, you gotta specify a scala test directory"
+  else
+    cd ~/co/manage/scala/$1/src/test/scala
+  fi
+}
 
 # ssh-agent aliases setup
 alias dssh='ssh-add ~/.ssh/dev_rsa'
 
 # ssh aliases
 alias d109='ssh dev109'
+alias sf100='ssh sf100'
 
 # sublime alias for Mac OS X
 alias subl='/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl'
