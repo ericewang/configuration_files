@@ -173,7 +173,7 @@ function cds {
   fi
 }
 
-function cdst {
+function cdt {
   if [ -z $1 ]; then
     echo "You suck, you gotta specify a scala test directory"
   else
