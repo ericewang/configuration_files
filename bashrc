@@ -109,8 +109,9 @@ if ! shopt -oq posix; then
 fi
 
 EDITOR=/usr/bin/vim
-alias sublime='/usr/bin/sublime-text'
+#alias sublime='/usr/bin/sublime-text'
 alias vi='vim'
+#alias vim='/usr/bin/vim'
 
 # Git branch in prompt.
 
@@ -133,6 +134,7 @@ export LSCOLORS=ExFxBxDxCxegedabagacad
 alias c='clear'
 
 # ls aliases
+alias ls='ls --color=auto -F --group-directories-first'
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
@@ -158,9 +160,31 @@ alias cdb='cd ~/co/router/base'
 alias cdmr='cd ~/co/manage-released'
 alias cdd='cd /var/local/meraki/manage-devel'
 alias cdj='cd ~/co/manage/private/react'
-alias cds='cd ~/co/manage/scala'
+alias cdsu='cd ~/co/manage/scala/support/src/main/scala'
 alias cdg='cd ~/co/manage/scala/grabbers/src/main/scala'
 alias cdt='cd ~/co/manage/scala/grabbers/src/test/scala'
+alias cdl='cd ~/co/manage/scala/lt/src/main/scala'
+alias cdlt='cd ~/co/manage/scala/lt/src/test/scala'
+alias cdclt='cd ~/co/manage/cpp/little_table'
+alias cdcltt='cd ~/co/manage/cpp/little_table/test'
+alias cdc='cd ~/co/manage/cpp'
+alias cdcltg='cd ~/co/manage/cpp/little_table_gtest'
+
+function cds {
+  if [ -z $1 ]; then
+    cd ~/co/manage/scala
+  else
+    cd ~/co/manage/scala/$1/src/main/scala
+  fi
+}
+
+function cdst {
+  if [ -z $1 ]; then
+    echo "You suck, you gotta specify a scala test directory"
+  else
+    cd ~/co/manage/scala/$1/src/test/scala
+  fi
+}
 
 # run console
 alias dco='~/co/manage/script/console'
@@ -178,6 +202,7 @@ alias dspsql='psql -U www-data meraki_shard_development -h shard-development-db.
 alias personaltestsql='psql -U meraki_test_helper -h development-db.meraki.com -d meraki_test_ericwang'
 alias tpsql='psql -U www-data-test -d meraki_test -h development-db'
 alias sqltd='~/co/manage/cpp/sqlt/sqlt development-lt 5458'
+alias tsqltd='~/co/manage/cpp/sqlt/sqlt development-lt 5658'
 alias mysqltd='~/co/manage/cpp/sqlt/sqlt localhost 10002'
 alias mylt='~/co/manage/cpp/little_table/server -c 500 -t 200 -p 10002 ~/local_lt'
 
@@ -188,6 +213,7 @@ alias dssh='ssh-add ~/.ssh/dev_rsa'
 if [ -f ~/co/manage/script/svnmerge_helpers.sh ]; then
     source ~/co/manage/script/svnmerge_helpers.sh
 fi
+alias svnc='svn commit -F svnmerge-commit-message.txt'
 
 PATH=$PATH:$HOME/bin
 MANPATH=$MANPATH:$HOME/share/man
@@ -242,3 +268,6 @@ pe ()
 alias apc='telnet 10.3.13.133'
 alias cr='/home/ericwang/co/manage/script/cr'
 alias gitbro="git log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
+
+# temp Gtest thing
+GTEST_DIR=/home/ericwang/googletest/googletest
