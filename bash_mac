@@ -56,6 +56,10 @@ alias cdk='cd ~/co/router/meraki'
 alias cdh='cd ~/co/router/hostap'
 alias cdb='cd ~/co/router/base'
 alias cdj='cd ~/co/manage/private/react'
+alias cdclt='cd ~/co/manage/cpp/little_table'
+alias cdcltt='cd ~/co/manage/cpp/little_table/test'
+alias cdc='cd ~/co/manage/cpp'
+alias cdcltg='cd ~/co/manage/cpp/little_table_gtest'
 
 # scala aliases
 function cds {
