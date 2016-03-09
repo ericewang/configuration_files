@@ -93,9 +93,9 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-#if [ -f ~/.bash_aliases ]; then
-#    . ~/.bash_aliases
-#fi
+if [ -f ~/.aliases ]; then
+    . ~/.aliases
+fi
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -108,10 +108,11 @@ if ! shopt -oq posix; then
   fi
 fi
 
-EDITOR=/usr/bin/vim
+#EDITOR=/usr/bin/vim
 #alias sublime='/usr/bin/sublime-text'
 alias vi='vim'
 #alias vim='/usr/bin/vim'
+alias tmux='/home/ericwang/bin/tmux-1.8/tmux'
 
 # Git branch in prompt.
 
@@ -130,86 +131,6 @@ export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[32m\]
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
 
-
-alias c='clear'
-
-# ls aliases
-alias ls='ls --color=auto -F --group-directories-first'
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-alias lsd='ls -d */'
-
-# git aliases
-alias gg='git grep -n'
-alias gsr='git svn rebase'
-alias gme='git log --author=ericwang'
-alias gb='git branch'
-alias gc='git checkout'
-alias gs='git show'
-alias gd='git diff --color-words'
-alias gca='git commit --amend'
-alias gl='git log -p --stat'
-
-# cd aliases
-alias cdm='cd ~/co/manage'
-alias cdr='cd ~/co/router'
-alias cdk='cd ~/co/router/meraki'
-alias cdh='cd ~/co/router/hostap'
-alias cdb='cd ~/co/router/base'
-alias cdmr='cd ~/co/manage-released'
-alias cdd='cd /var/local/meraki/manage-devel'
-alias cdj='cd ~/co/manage/private/react'
-alias cdclt='cd ~/co/manage/cpp/little_table'
-alias cdcltt='cd ~/co/manage/cpp/little_table/test'
-alias cdc='cd ~/co/manage/cpp'
-alias cdcltg='cd ~/co/manage/cpp/little_table_gtest'
-
-function cds {
-  if [ -z $1 ]; then
-    cd ~/co/manage/scala
-  else
-    cd ~/co/manage/scala/$1/src/main/scala
-  fi
-}
-
-function cdt {
-  if [ -z $1 ]; then
-    echo "You suck, you gotta specify a scala test directory"
-  else
-    cd ~/co/manage/scala/$1/src/test/scala
-  fi
-}
-
-# run console
-alias dco='~/co/manage/script/console'
-
-# sbt alias
-alias sbt='LD_LIBRARY_PATH=/home/ericwang/co/manage/scala/support/lib/i386 sbt'
-
-# run server
-alias ss='~/co/manage/script/server --debug'
-# run livebroker
-alias lb='cdm; ./script/live_broker/live_broker.rb --skip-running-procs'
-
-# sql related aliases
-alias dspsql='psql -U www-data meraki_shard_development -h shard-development-db.meraki.com'
-alias personaltestsql='psql -U meraki_test_helper -h development-db.meraki.com -d meraki_test_ericwang'
-alias tpsql='psql -U www-data-test -d meraki_test -h development-db'
-alias sqltd='~/co/manage/cpp/sqlt/sqlt development-lt 5458'
-alias tsqltd='~/co/manage/cpp/sqlt/sqlt development-lt 5658'
-alias mysqltd='~/co/manage/cpp/sqlt/sqlt localhost 10002'
-alias mylt='~/co/manage/cpp/little_table/server -c 500 -t 200 -p 10002 ~/local_lt'
-
-# ssh-agent aliases setup
-alias dssh='ssh-add ~/.ssh/dev_rsa'
-
-# svnmerge aliases : svna, svnm, svnprep, svnm_auto
-if [ -f ~/co/manage/script/svnmerge_helpers.sh ]; then
-    source ~/co/manage/script/svnmerge_helpers.sh
-fi
-alias svnc='svn commit -F svnmerge-commit-message.txt'
-
 PATH=$PATH:$HOME/bin
 MANPATH=$MANPATH:$HOME/share/man
 
@@ -221,48 +142,6 @@ export PATH="$PATH:/usr/bin:/usr/local/bin/"
 # installing ruby versions
 #export PATH="$HOME/.rbenv/bin:$PATH"
 #eval "$(rbenv init -)"
-
-alias sob='source ~/.bashrc'
-extract () {
-    if [ -f $1 ] ; then
-      case $1 in
-        *.tar.bz2)   tar xjf $1     ;;
-        *.tar.gz)    tar xzf $1     ;;
-        *.bz2)       bunzip2 $1     ;;
-        *.rar)       unrar e $1     ;;
-        *.gz)        gunzip $1      ;;
-        *.tar)       tar xf $1      ;;
-        *.tbz2)      tar xjf $1     ;;
-        *.tgz)       tar xzf $1     ;;
-        *.zip)       unzip $1       ;;
-        *.Z)         uncompress $1  ;;
-        *.7z)        7z x $1        ;;
-        *)     echo "'$1' cannot be extracted via extract()" ;;
-         esac
-     else
-         echo "'$1' is not a valid file"
-     fi
-}
-
-# random useful aliases
-alias freq='cut -f1 -d" " ~/.bash_history | sort | uniq -c | sort -nr | head -n 30'
-alias tm='ps -ef | grep'
-alias myip='curl ip.appspot.com'
-alias howcool='git log --author="ericwang" --pretty=tformat: --numstat | gawk '"'"'{ add += $1; subs += $2; loc += $1-$2 } END {printf "added lines: %s removed lines: %s total lines: %s\n", add, subs, loc }'"'"
-alias hownot='git log --author="Eric Wang" --pretty=tformat: --numstat | gawk '"'"'{ add += $1; subs += $2; loc += $1-$2 } END {printf "added lines: %s removed lines: %s total lines: %s\n", add, subs, loc }'"'"
-function gitstats {
-    echo "Stats for: $1"
-    git log --author="$1" --pretty=tformat: --numstat | gawk '{ add += $1; subs += $2; loc += $1-$2 } END {printf "added lines: %s removed lines: %s total lines: %s\n", add, subs, loc }'
-}
-function gr { grep -rnIi "$1" . --color; }
-pe ()
-{
-    perl -e "\$result = $*; printf \"%s\n0x%08x\n\", \$result, \$result;"
-}
-# alias for power supply
-alias apc='telnet 10.3.13.133'
-alias cr='/home/ericwang/co/manage/script/cr'
-alias gitbro="git log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
 
 # temp Gtest thing
 GTEST_DIR=/home/ericwang/googletest/googletest

@@ -1,3 +1,9 @@
+
+# load aliases if available
+if [ -f ~/.aliases ]; then
+    . ~/.aliases
+fi
+
 export EDITOR=vim
 
 # Tell ls to be colourful
@@ -30,95 +36,6 @@ parse_git_branch() {
 
 # show branch in prommpt version
 export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[32m\]\$(parse_git_branch)\[\033[m\]\$ "
-
-alias c='clear'
-
-# ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-
-# git aliases
-alias gg='git grep'
-alias gsr='git svn rebase'
-alias gme='git log --author=ericwang'
-alias gb='git branch'
-alias gc='git checkout'
-alias gs='git show'
-alias gd='git diff --color-words'
-alias gca='git commit --amend'
-alias gl='git log -p --stat'
-
-# cd aliases
-alias cdm='cd ~/co/manage'
-alias cdr='cd ~/co/router'
-alias cdk='cd ~/co/router/meraki'
-alias cdh='cd ~/co/router/hostap'
-alias cdb='cd ~/co/router/base'
-alias cdj='cd ~/co/manage/private/react'
-alias cdclt='cd ~/co/manage/cpp/little_table'
-alias cdcltt='cd ~/co/manage/cpp/little_table/test'
-alias cdc='cd ~/co/manage/cpp'
-alias cdcltg='cd ~/co/manage/cpp/little_table_gtest'
-
-# scala aliases
-function cds {
-  if [ -z $1 ]; then
-    cd ~/co/manage/scala
-  else
-    cd ~/co/manage/scala/$1/src/main/scala
-  fi
-}
-
-function cdt {
-  if [ -z $1 ]; then
-    echo "You suck, you gotta specify a scala test directory"
-  else
-    cd ~/co/manage/scala/$1/src/test/scala
-  fi
-}
-
-# ssh-agent aliases setup
-alias dssh='ssh-add ~/.ssh/dev_rsa'
-
-# ssh aliases
-alias d109='ssh dev109'
-alias sf100='ssh sf100'
-
-# sublime alias for Mac OS X
-alias subl='/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl'
-alias mountmanage='sshfs ericwang@dev109.meraki.com:/home/ericwang/co/manage /Users/ericwang/remote/manage -oauto_cache,reconnect,Ciphers=arcfour'
-alias umountmanage='sudo umount /Users/ericwang/remote/manage'
-
-alias sob='source ~/.bash_profile'
-extract () {
-    if [ -f $1 ] ; then
-      case $1 in
-        *.tar.bz2)   tar xjf $1     ;;
-        *.tar.gz)    tar xzf $1     ;;
-        *.bz2)       bunzip2 $1     ;;
-        *.rar)       unrar e $1     ;;
-        *.gz)        gunzip $1      ;;
-        *.tar)       tar xf $1      ;;
-        *.tbz2)      tar xjf $1     ;;
-        *.tgz)       tar xzf $1     ;;
-        *.zip)       unzip $1       ;;
-        *.Z)         uncompress $1  ;;
-        *.7z)        7z x $1        ;;
-        *)     echo "'$1' cannot be extracted via extract()" ;;
-         esac
-     else
-         echo "'$1' is not a valid file"
-     fi
-}
-alias freq='cut -f1 -d" " ~/.bash_history | sort | uniq -c | sort -nr | head -n 30'
-alias tm='ps -ef | grep'
-alias myip='curl ip.appspot.com'
-function gr { grep -rnIi "$1" . --color; }
-pe ()
-{
-    perl -e "\$result = $*; printf \"%s\n0x%08x\n\", \$result, \$result;"
-}
 
 alias u='osascript ~/Documents/IncreaseVolume.scpt'
 alias d='osascript ~/Documents/DecreaseVolume.scpt'
