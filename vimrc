@@ -46,6 +46,13 @@ filetype plugin indent on
     " Show just the filename
     let g:airline#extensions#tabline#fnamemod = ':t'
 
+    " special command for inserting a real tab by pressing shift-tab
+    " (note you must be in insert mode for this to work)
+    " This only is useful in Makefiles
+    inoremap <S-Tab> <C-V><Tab>
+
+    " rebind since escape is sometimes far to use
+    imap jk <Esc>
 " }
 
 
@@ -55,6 +62,7 @@ filetype plugin indent on
     syntax enable               " syntax highlighting on
     "let g:solarized_termcolors = 256  " New line!!
     "colorscheme solarized
+    "colorscheme desert
 
 " }
 
