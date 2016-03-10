@@ -100,7 +100,7 @@ EDITOR=vim
 #alias sublime='/usr/bin/sublime-text'
 alias vi='vim'
 #alias vim='/usr/bin/vim'
-alias tmux='/home/ericwang/bin/tmux-1.8/tmux'
+#alias tmux='/home/ericwang/bin/tmux-1.8/tmux'
 
 PATH=$PATH:$HOME/bin
 MANPATH=$MANPATH:$HOME/share/man
