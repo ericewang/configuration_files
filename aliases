@@ -1,3 +1,5 @@
+# Aliases
+
 # normal aliases
 alias vi='vim'
 alias c='clear'
@@ -6,7 +8,11 @@ alias sop='source ~/.bash_profile'
 alias soz='source ~/.zshrc'
 
 # ls aliases
-alias ls='ls --color=auto -F --group-directories-first'
+if [[ `uname` == "Darwin" ]]; then
+  alias ls='ls -F'
+else
+  alias ls='ls --color=auto -F --group-directories-first'
+fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
@@ -22,6 +28,19 @@ alias gs='git show'
 alias gd='git diff --color-words'
 alias gca='git commit --amend'
 alias gl='git log -p --stat'
+
+# Git branch in prompt.
+parse_git_branch() {
+
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+
+}
+
+# tmux aliases
+alias t='tmux'
+alias tls='tmux ls'
+alias tat='tmux attach -t'
+alias tnew='tmux new -s'
 
 # cd aliases
 alias cdm='cd ~/co/manage'
@@ -118,10 +137,12 @@ pe ()
 {
     perl -e "\$result = $*; printf \"%s\n0x%08x\n\", \$result, \$result;"
 }
+
 # alias for power supply
 alias apc='telnet 10.3.13.133'
 alias cr='/home/ericwang/co/manage/script/cr'
 alias gitbro="git log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
+alias p8='ping 8.8.8.8'
 
 # ssh aliases
 alias d109='ssh dev109'

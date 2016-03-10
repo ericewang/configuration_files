@@ -5,7 +5,7 @@
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="agnoster"
+ZSH_THEME="pygmalion"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -83,9 +83,18 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-if [ -f ~/.aliases ]; then
-    . ~/.aliases
-fi
+# Given a list of files to try to source, source the first one that exists and return
+function try_source {
+  for file in "${@}"
+  do
+    if [ -f $file ]; then
+      source $file
+      return
+    fi
+  done
+}
+
+try_source $HOME/.aliases
 
 EDITOR=vim
 #alias sublime='/usr/bin/sublime-text'
