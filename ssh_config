@@ -1,0 +1,128 @@
+ServerAliveInterval 60
+
+Host imac
+    ForwardAgent yes
+    User ericwang
+    Hostname 10.3.9.38
+    ControlMaster auto
+    ControlPath ~/.ssh/sockets/%r@%h-%p
+    ControlPersist 1h
+
+Host eric
+    ForwardAgent yes
+    User eric
+    Hostname beacon-home-vcwtdmqcdk.dynamic-m.com
+    Port 4888
+    IdentityFile ~/.ssh/eric_rsa
+
+Host homemx
+    Hostname [fd0a:9b09:1f7:0:218:aff:fe07:ae9c]
+    ForwardAgent yes
+    StrictHostKeyChecking no
+    User root
+    ProxyCommand ssh dev100 -W %h:%p
+
+Host ericbypass
+    ForwardAgent yes
+    User eric
+    Hostname 192.168.192.248
+    Port 22
+    IdentityFile ~/.ssh/eric_rsa
+    ProxyCommand ssh homemx -W %h:%p
+
+Host bug
+    ForwardAgent yes
+    Hostname eng.meraki.com
+    Port 7888
+    IdentityFile ~/.ssh/dev_rsa
+
+Host sdg0 dal0 dev*
+    user ericwang
+    ForwardAgent yes
+    Hostname %h.meraki.com
+    ControlMaster auto
+    ControlPath ~/.ssh/sockets/%r@%h-%p
+    ControlPersist 1h
+    IdentityFile ~/.ssh/dev_rsa
+
+Host 6.*
+    StrictHostKeyChecking no
+    User root
+    ProxyCommand ssh dev100 -W %h:%p
+
+Host clienta
+    StrictHostKeyChecking no
+    Hostname [fd0a:9b09:1f7:0:218:aff:fe17:daa0]
+    User root
+    ProxyCommand ssh dev100 -W %h:%p
+
+Host clientb
+    StrictHostKeyChecking no
+    Hostname [fd0a:9b09:1f7:0:8a15:44ff:fefe:450]
+    User root
+    ProxyCommand ssh dev100 -W %h:%p
+
+Host ubuntu
+    ForwardAgent yes
+    Hostname eng.meraki.com
+    User ericwang
+    Port 4888
+    IdentityFile ~/.ssh/vm_rsa
+
+Host switch
+    StrictHostKeyChecking no
+    Hostname 6.82.56.114
+    User root
+    ProxyCommand ssh dev100 -W %h:%p
+
+Host switch2
+    StrictHostKeyChecking no
+    Hostname 6.0.243.82
+    User root
+    ProxyCommand ssh dev100 -W %h:%p
+
+Host switch3
+    StrictHostKeyChecking no
+    Hostname [fd0a:9b09:1f7:0:218:aff:fecf:84b5]
+    User root
+    ProxyCommand ssh dev100 -W %h:%p
+
+Host wireless
+    StrictHostKeyChecking no
+    Hostname 6.33.208.238
+    User root
+    ProxyCommand ssh dev100 -W %h:%p
+
+Host wired
+    StrictHostKeyChecking no
+    Hostname 6.7.40.200
+    User root
+    ProxyCommand ssh dev100 -W %h:%p
+
+Host kingkong
+    StrictHostKeyChecking no
+    Hostname 6.45.229.80
+    User root
+    ProxyCommand ssh dev100 -W %h:%p
+
+Host rex
+    StrictHostKeyChecking no
+    Hostname 6.43.129.112
+    User root
+    ProxyCommand ssh dev100 -W %h:%p
+
+Host ubu
+    Hostname 10.3.9.71
+    User ericwang
+    ForwardAgent yes
+    ProxyCommand ssh sf100 -W %h:%p
+
+Host sf100 eng.meraki.com if-that-makes-sense
+    Hostname eng.meraki.com
+    ForwardAgent yes
+    ForwardX11 yes
+    ForwardX11Trusted yes
+    IdentityFile ~/.ssh/dev_rsa
+
+Host *
+    UseRoaming no
