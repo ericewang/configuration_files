@@ -152,3 +152,12 @@ alias sf100='ssh sf100'
 alias subl='/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl'
 alias mountmanage='sshfs ericwang@dev109.meraki.com:/home/ericwang/co/manage /Users/ericwang/remote/manage -oauto_cache,reconnect,Ciphers=arcfour'
 alias umountmanage='sudo umount /Users/ericwang/remote/manage'
+
+# function for finding revision number in git-svn dir
+function svn-rev {
+  if [ -z $1 ]; then
+    echo "You suck, you need to specify a revision number"
+  else
+    git log -p -1 $(git svn find-rev $1)
+  fi
+}
