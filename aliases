@@ -3,6 +3,7 @@
 # normal aliases
 alias vi='vim'
 alias c='clear'
+alias cls='clear; ls'
 alias sob='source ~/.bashrc'
 alias sop='source ~/.bash_profile'
 alias soz='source ~/.zshrc'
@@ -52,12 +53,11 @@ alias cdmr='cd ~/co/manage-released'
 alias cdd='cd /var/local/meraki/manage-devel'
 alias cdj='cd ~/co/manage/private/react'
 alias cdclt='cd ~/co/manage/cpp/little_table'
-alias cdcltt='cd ~/co/manage/cpp/little_table/test'
 alias cdc='cd ~/co/manage/cpp'
-alias cdcltg='cd ~/co/manage/cpp/little_table_gtest'
-alias cdcltgu='cd ~/co/manage/cpp/little_table_gtest/unit'
-alias cdcltgh='cd ~/co/manage/cpp/little_table_gtest/helpers'
-alias cdcltgf='cd ~/co/manage/cpp/little_table_gtest/functional'
+alias cdcltg='cd ~/co/manage/cpp/little_table/test'
+alias cdcltgu='cd ~/co/manage/cpp/little_table/test/unit'
+alias cdcltgh='cd ~/co/manage/cpp/little_table/test/helpers'
+alias cdcltgf='cd ~/co/manage/cpp/little_table/test/functional'
 
 function cds {
   if [ -z $1 ]; then
@@ -90,6 +90,13 @@ alias tpsql='psql -U www-data-test -d meraki_test -h development-db'
 alias sqltd='~/co/manage/cpp/sqlt/sqlt development-lt 5458'
 alias tsqltd='~/co/manage/cpp/sqlt/sqlt development-lt 5658'
 alias mysqltd='~/co/manage/cpp/sqlt/sqlt localhost 10002'
+function mysqltp {
+  if [ -z $1 ]; then
+    echo "You suck, you need to specify a port number"
+  else
+    ~/co/manage/cpp/sqlt/sqlt localhost $1
+  fi
+}
 alias mylt='~/co/manage/cpp/little_table/server -c 500 -t 200 -p 10002 ~/local_lt'
 
 # ssh-agent aliases setup
