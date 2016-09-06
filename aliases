@@ -8,6 +8,12 @@ alias sob='source ~/.bashrc'
 alias sop='source ~/.bash_profile'
 alias soz='source ~/.zshrc'
 
+# pushd/popd aliases
+# assumes zsh already aliased cd with pushd
+# alias cd='pushd'
+# alias d = 'dirs -v | head -10'
+alias b='popd'
+
 # ls aliases
 if [[ `uname` == "Darwin" ]]; then
   alias ls='ls -F'
