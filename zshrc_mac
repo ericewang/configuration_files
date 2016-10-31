@@ -98,10 +98,36 @@ try_source $HOME/.aliases
 
 export EDITOR=vim
 
-alias u='osascript ~/Documents/IncreaseVolume.scpt'
-alias d='osascript ~/Documents/DecreaseVolume.scpt'
-alias m='osascript ~/Documents/ToggleMuteVolume.scpt'
-alias g='osascript -e "get volume settings"'
+# not using atm anyways
+#alias u='osascript ~/Documents/IncreaseVolume.scpt'
+#alias d='osascript ~/Documents/DecreaseVolume.scpt'
+#alias m='osascript ~/Documents/ToggleMuteVolume.scpt'
+#alias g='osascript -e "get volume settings"'
 
 # for adding sml to path
 export PATH="$PATH:/usr/local/smlnj/bin"
+
+export CLASSPATH=$CLASSPATH:/Users/ericwang/Documents/cs11_adv_java/testng-6.8.jar
+
+# java 1.8 is install here, so use the correct path
+export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
+export PATH="$PATH:/Users/ericwang/apache-ant-1.9.7/bin"
+export PATH="$PATH:/Users/ericwang/apache-maven-3.3.9/bin"
+
+# pip should only run if there is a virtualenv currently activated
+export PIP_REQUIRE_VIRTUALENV=true
+# disable variable to order to install packages globally
+gpip() {
+  PIP_REQUIRE_VIRTUALENV="" pip "$@"
+}
+# virtualenvwrapper stuff
+export WORKON_HOME=~/.virtualenvs
+source /usr/local/bin/virtualenvwrapper.sh
+# zsh doesn't print what env i'm in, so use this to check periodically
+whichenv() {
+  if [[ -z $VIRTUAL_ENV ]]; then
+    echo "No active virtual environment!"
+  else
+    echo $VIRTUAL_ENV
+  fi
+}
