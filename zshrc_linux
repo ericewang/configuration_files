@@ -109,3 +109,7 @@ export PATH="$PATH:/usr/bin:/usr/local/bin/"
 
 # temp Gtest thing
 GTEST_DIR=/home/ericwang/googletest/googletest
+
+# java path for maven
+export JAVA_HOME="$(dirname $(dirname $(readlink -f $(which javac))))"
+#export PATH="$PATH:/home/ericwang/apache-maven-3.3.9/bin"

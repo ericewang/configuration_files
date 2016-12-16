@@ -51,13 +51,14 @@ alias tnew='tmux new -s'
 
 # cd aliases
 alias cdm='cd ~/co/manage'
+alias cdmg='cd ~/co/manage_gerrit'
 alias cdr='cd ~/co/router'
 alias cdk='cd ~/co/router/meraki'
 alias cdh='cd ~/co/router/hostap'
 alias cdb='cd ~/co/router/base'
 alias cdmr='cd ~/co/manage-released'
 alias cdd='cd /var/local/meraki/manage-devel'
-alias cdj='cd ~/co/manage/private/react'
+alias cdjs='cd ~/co/manage/private/react'
 alias cdclt='cd ~/co/manage/cpp/little_table'
 alias cdc='cd ~/co/manage/cpp'
 alias cdcltg='cd ~/co/manage/cpp/little_table/test'
@@ -174,3 +175,38 @@ function svn-rev {
     git log -p -1 $(git svn find-rev $1)
   fi
 }
+
+function ct {
+  if [ -z $1 ] || [ -z $2 ]; then
+    echo "Need two args"
+  else
+    curl -g http://\[$1\]:7749/curl\?url\=$2
+  fi
+}
+
+function ctloop {
+  if [ -z $1 ]; then
+    echo "don't forget the ipv6 address"
+  else
+    for url in "mtunnel.meraki.com" "sdg159.meraki.com" "dal165.meraki.com"; do
+      echo "testing $1, $url"
+      ct $1 $url
+    done
+  fi
+}
+
+# useful for reloading your SSH_AUTH_SOCK when you log out and your you
+# can't open a connection to your authentication agent for an open window
+update-env-from-tmux () {
+  tmux_environment=$(tmux show-environment)
+  for var in ${(f)tmux_environment}
+  do
+    if [[ ${var:0:1} = "-" ]]
+    then
+      unset -v ${var:1}
+    else
+      export $var
+    fi
+  done
+}
+alias fix_tmux='update-env-from-tmux'

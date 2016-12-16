@@ -53,6 +53,11 @@ filetype plugin indent on
 
     " rebind since escape is sometimes far to use
     imap jk <Esc>
+
+    " From Ed (11/15/2016) - useful for opening multiple files from the
+    " same path
+    " Set %% to be a shortcut for the path of the current file
+    cabbr <expr> %% expand('%:p:h')
 " }
 
 
